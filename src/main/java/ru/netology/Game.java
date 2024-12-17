@@ -4,12 +4,13 @@ import lombok.Getter;
 import ru.netology.dto.Player;
 import ru.netology.exceptions.NotRegisteredException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 public class Game {
 
-    private List<Player> players;
+    private final List<Player> players = new ArrayList<>();
 
     public boolean register (Player player) {
         for (Player playerSource : players) {
