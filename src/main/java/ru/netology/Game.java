@@ -14,7 +14,7 @@ public class Game {
 
     public boolean register (Player player) {
         for (Player playerSource : players) {
-            if (playerSource.getId() == player.getId()) {
+            if (playerSource.getName().equals(player.getName())) {
                 return false;
             }
         }

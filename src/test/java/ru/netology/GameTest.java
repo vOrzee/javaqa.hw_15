@@ -20,9 +20,9 @@ class GameTest {
     void setUp() {
         game = new Game();
 
-        player1 = new Player(1, "Вася", 50);
-        player2 = new Player(2, "Петя", 100);
-        player3 = new Player(3, "Николай Сигизмундович", 50);
+        player1 = new Player("Вася", 50);
+        player2 = new Player("Петя", 100);
+        player3 = new Player("Николай Сигизмундович", 50);
 
         game.register(player1);
         game.register(player2);
@@ -31,7 +31,7 @@ class GameTest {
 
     @Test
     void shouldRegisterPlayerSuccessfully() {
-        Player masha = new Player(4, "Мария", 70);
+        Player masha = new Player("Мария", 70);
         assertTrue(game.register(masha));
         assertEquals(4, game.getPlayers().size());
     }
