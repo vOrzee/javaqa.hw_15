@@ -3,22 +3,20 @@ package ru.netology;
 import lombok.Getter;
 import ru.netology.dto.Player;
 import ru.netology.exceptions.NotRegisteredException;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 @Getter
 public class Game {
 
-    private final List<Player> players = new ArrayList<>();
+    private final HashMap<String, Player> players = new HashMap<>();
 
     public boolean register (Player player) {
-        for (Player playerSource : players) {
-            if (playerSource.getId() == player.getId()) {
+        for (Player playerSource : players.values()) {
+            if (playerSource.getId() == player.getId() || playerSource.getName().equals(player.getName())) {
                 return false;
             }
         }
-        players.add(player);
+        players.put(player.getName(), player);
         return true;
     }
 
@@ -39,12 +37,6 @@ public class Game {
     }
 
     public Player getByPlayerName (String playerName) {
-        Player result = null;
-        for (Player player : players) {
-            if (player.getName().equals(playerName)) {
-                result = player;
-            }
-        }
-        return result;
+        return players.get(playerName);
     }
 }
