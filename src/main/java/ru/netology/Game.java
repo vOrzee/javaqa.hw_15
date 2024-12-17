@@ -12,7 +12,7 @@ public class Game {
 
     public boolean register (Player player) {
         for (Player playerSource : players.values()) {
-            if (playerSource.getId() == player.getId() || playerSource.getName().equals(player.getName())) {
+            if (playerSource.getName().equals(player.getName())) {
                 return false;
             }
         }

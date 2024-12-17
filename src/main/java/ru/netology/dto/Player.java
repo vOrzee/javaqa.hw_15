@@ -6,12 +6,10 @@ import lombok.Getter;
 @Getter
 @EqualsAndHashCode
 public class Player {
-    private final int id;
     private final String name;
     private final int strength;
 
-    public Player(int id, String name, int strength) {
-        this.id = id;
+    public Player(String name, int strength) {
         this.name = name;
         this.strength = strength;
     }
