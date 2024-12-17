@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import ru.netology.dto.Player;
 import ru.netology.exceptions.NotRegisteredException;
 
-import java.util.List;
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,8 +37,14 @@ class GameTest {
     }
 
     @Test
-    void shouldNotRegisterPlayerIfAlreadyExists() {
+    void shouldNotRegisterPlayerIdIfAlreadyExists() {
         assertFalse(game.register(player1));
+        assertEquals(3, game.getPlayers().size());
+    }
+
+    @Test
+    void shouldNotRegisterPlayerNameIfAlreadyExists() {
+        assertFalse(game.register(new Player(67, "Петя", 70)));
         assertEquals(3, game.getPlayers().size());
     }
 
@@ -79,11 +85,11 @@ class GameTest {
 
     @Test
     void shouldReturnListOfRegisteredPlayers() {
-        List<Player> players = game.getPlayers();
+        HashMap<String, Player> players = game.getPlayers(); // Можно просто var для универсальности
         assertEquals(3, players.size());
-        assertTrue(players.contains(player1));
-        assertTrue(players.contains(player2));
-        assertTrue(players.contains(player3));
+        assertTrue(players.containsValue(player1)); // assertFalse(game.register(player1)); для универсальности
+        assertTrue(players.containsValue(player2));
+        assertTrue(players.containsValue(player3));
     }
 
     @Test
